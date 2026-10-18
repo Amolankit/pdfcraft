@@ -299,6 +299,18 @@ impl Lang {
         Lang::from_code(code).filter(|l| l.0.available())
     }
 
+    /// The name the interface-language picker shows for a saved preference: the language's own name
+    /// if `available` says it can be drawn, otherwise `None` (the caller shows "Auto", which is what
+    /// [`Lang::from_pref`] falls back to).
+    pub fn picker_name(pref: &str, available: impl Fn(Lang) -> bool) -> Option<&'static str> {
+        Lang::from_code(pref).filter(|l| available(*l)).map(Lang::name)
+    }
+
+    /// Whether this build can show the language.
+    pub fn is_available(self) -> bool {
+        self.0.available()
+    }
+
     /// Resolve the `language` preference: a language code, or [`AUTO`] (and anything unknown,
     /// e.g. a code from a newer version) to follow the system locale.
     pub fn from_pref(pref: &str) -> Lang {

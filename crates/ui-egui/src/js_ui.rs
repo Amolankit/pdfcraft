@@ -265,7 +265,7 @@ pub(crate) fn preferences_body(ui: &mut egui::Ui, app: &mut PdfCraftApp, t: &Tok
     ui.label(egui::RichText::new(tl!("Preferences")).font(theme::semibold(18.0)));
     ui.horizontal(|ui| {
         ui.label(tl!("Interface language"));
-        let selected = crate::i18n::Lang::from_code(&app.language).map_or(tl!("Auto"), crate::i18n::Lang::name);
+        let selected = crate::i18n::Lang::picker_name(&app.language, crate::i18n::Lang::is_available).unwrap_or_else(|| tl!("Auto"));
         let before = app.language.clone();
         egui::ComboBox::from_id_salt("interface-language").selected_text(selected).show_ui(ui, |ui| {
             if ui.selectable_value(&mut app.language, crate::i18n::AUTO.to_string(), tl!("Auto")).clicked() {
@@ -605,5 +605,14 @@ mod date_language_tests {
         assert!(!codes(Some("de"), false).contains(&"hi"));
         assert!(codes(Some("hi"), false).contains(&"hi"));
         assert!(codes(None, true).contains(&"hi"));
+    }
+
+    #[test]
+    fn interface_picker_shows_auto_for_unavailable_saved_language() {
+        use crate::i18n::Lang;
+        let hindi = |l: Lang| l.code() == "hi";
+        assert_eq!(Lang::picker_name("hi", |l| !hindi(l)), None);
+        assert!(Lang::picker_name("hi", |_| true).is_some());
+        assert_eq!(Lang::picker_name("auto", |_| true), None);
     }
 }
