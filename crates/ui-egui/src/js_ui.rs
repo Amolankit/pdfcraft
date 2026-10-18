@@ -568,7 +568,8 @@ fn date_format(ui: &mut egui::Ui, app: &mut PdfCraftApp, t: &Tokens) {
                 if ui.selectable_label(current.is_none(), follow).clicked() && app.session.set_date_language(None).is_ok() {
                     ui.close();
                 }
-                for l in DATE_LANGUAGES.iter().filter(|l| crate::i18n::date_language_available(l.code)) {
+                // A saved language stays listed even when this build can't offer it for new choices.
+                for l in DATE_LANGUAGES.iter().filter(|l| current.as_deref() == Some(l.code) || crate::i18n::date_language_available(l.code)) {
                     if ui.selectable_label(current.as_deref() == Some(l.code), l.name).clicked()
                         && app.session.set_date_language(Some(l.code)).is_ok()
                     {
