@@ -226,12 +226,7 @@ impl LangInfo {
         if cfg!(test) || self.code != "hi" {
             return true;
         }
-        script_renderable(
-            self.code,
-            cfg!(target_arch = "wasm32"),
-            !pdfcraft_fonts::ui_devanagari_fonts().is_empty(),
-            crate::system_fonts::devanagari_fallback().is_some(),
-        )
+        script_renderable(self.code, cfg!(target_arch = "wasm32"), !pdfcraft_fonts::ui_devanagari_fonts().is_empty(), installed_devanagari())
     }
 
     /// How many plural forms the language's `@plural` entries list.
@@ -251,6 +246,16 @@ impl LangInfo {
             catalog
         })
     }
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+fn installed_devanagari() -> bool {
+    crate::system_fonts::devanagari_fallback().is_some()
+}
+
+#[cfg(target_arch = "wasm32")]
+fn installed_devanagari() -> bool {
+    false
 }
 
 /// `hi` needs a Devanagari face: an embedded one, or on desktop an installed one (the web build
@@ -284,15 +289,20 @@ impl Lang {
         self.0.code
     }
 
-    /// A language by its exact code.
+    /// A registered language by its code, whether or not this build can show it.
     pub fn from_code(code: &str) -> Option<Lang> {
-        LANGUAGES.iter().find(|l| l.code.eq_ignore_ascii_case(code) && l.available()).map(Lang)
+        LANGUAGES.iter().find(|l| l.code.eq_ignore_ascii_case(code)).map(Lang)
+    }
+
+    /// A registered language by its code, only if this build can show it.
+    fn from_code_available(code: &str) -> Option<Lang> {
+        Lang::from_code(code).filter(|l| l.0.available())
     }
 
     /// Resolve the `language` preference: a language code, or [`AUTO`] (and anything unknown,
     /// e.g. a code from a newer version) to follow the system locale.
     pub fn from_pref(pref: &str) -> Lang {
-        Lang::from_code(pref).unwrap_or_else(system_lang)
+        Lang::from_code_available(pref).unwrap_or_else(system_lang)
     }
 
     /// Every registered language.
@@ -359,7 +369,7 @@ pub fn lang_from_tag(tag: &str) -> Option<Lang> {
     if matches!(cands.first().map(String::as_str), Some("c" | "posix")) {
         return Some(Lang::EN);
     }
-    cands.iter().find_map(|c| Lang::from_code(c))
+    cands.iter().find_map(|c| Lang::from_code_available(c))
 }
 
 /// The system language (cached). English when it can't be determined.

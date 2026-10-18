@@ -82,7 +82,7 @@ Acrobat languages PdfCraft lacks: Danish, Dutch, Finnish, Norwegian, Swedish, He
 ## Revision history
 
 | Date | Change | Summary |
-| --- | --- | --- |
+|---|---|---|
 | 2026-10-17 | minor | Hindi: 160 entries, locale registration, date names, CLDR integer plurals and required shared UI labels, only keys the UI looks up (Lithuanian and Vietnamese unchanged). No Devanagari face in the pinned craft-fonts input, so rendering coverage is not claimed |
 | 2026-10-13 | minor | Vietnamese (`vi`) catalog: 2,591 entries (100% of current key union + `theme`/`Appearance`); twelve-language mean ≈ 68%; native-speaker community review; registered with `plural_none` |
 | 2026-10-14 | minor | Italian: 2,528 entries after adding the 201 keys the other catalogs had and the code looks up |
