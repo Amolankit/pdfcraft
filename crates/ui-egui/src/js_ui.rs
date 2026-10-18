@@ -556,7 +556,11 @@ fn date_format(ui: &mut egui::Ui, app: &mut PdfCraftApp, t: &Tokens) {
         let interface = crate::i18n::current().name();
         let follow = crate::i18n::fmt(tl!("Same as interface ({language})"), &[("language", interface)]);
         let current = app.session.date_language().map(str::to_string);
-        let selected = DATE_LANGUAGES.iter().find(|l| current.as_deref() == Some(l.code)).map_or(follow.clone(), |l| l.name.to_string());
+        let selected = DATE_LANGUAGES
+            .iter()
+            .filter(|l| crate::i18n::date_language_available(l.code))
+            .find(|l| current.as_deref() == Some(l.code))
+            .map_or(follow.clone(), |l| l.name.to_string());
         egui::ComboBox::from_id_salt("date-language")
             .selected_text(selected)
             .width(240.0)
@@ -564,7 +568,7 @@ fn date_format(ui: &mut egui::Ui, app: &mut PdfCraftApp, t: &Tokens) {
                 if ui.selectable_label(current.is_none(), follow).clicked() && app.session.set_date_language(None).is_ok() {
                     ui.close();
                 }
-                for l in &DATE_LANGUAGES {
+                for l in DATE_LANGUAGES.iter().filter(|l| crate::i18n::date_language_available(l.code)) {
                     if ui.selectable_label(current.as_deref() == Some(l.code), l.name).clicked()
                         && app.session.set_date_language(Some(l.code)).is_ok()
                     {

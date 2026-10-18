@@ -315,6 +315,12 @@ impl Lang {
     }
 }
 
+/// Whether the date-format language picker may offer `code`: a code that is also an interface
+/// language follows that language's availability; other codes are always offered.
+pub fn date_language_available(code: &str) -> bool {
+    LANGUAGES.iter().find(|l| l.code.eq_ignore_ascii_case(code)).is_none_or(LangInfo::available)
+}
+
 /// The canonical `language` preference for user input: [`AUTO`] or a registered code (any case).
 /// `None` for anything else, so callers can keep the current setting.
 pub fn normalize_pref(pref: &str) -> Option<&'static str> {
