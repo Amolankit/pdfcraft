@@ -72,11 +72,8 @@ none has translated help. Vietnamese's **To `full`** hours are therefore residua
 | Turkish | `tr` | 2,313 entries | partial | yes |
 | Lithuanian | `lt` | 2,585 entries | partial; community native-speaker review ([#1401](https://github.com/storytold/pdfcraft/pull/1401)) | no |
 
-**14 other languages** ship (23 catalogs plus English = **24** interface languages in Preferences).
-The entry counts without percentages were measured on 2026-10-12–13; they are not percentages of the older 2,143-key snapshot above. Their presence does not imply a detailed linguistic or runtime review.
-Acrobat languages PdfCraft lacks: Danish, Dutch, Finnish, Norwegian, Swedish, Hebrew. Vietnamese is shipped here but not by Acrobat.
 **14 other languages** ship (23 catalogs plus English, 24 interface languages in Preferences).
-The entry counts without percentages were measured on 2026-10-12 (Italian on 2026-10-14); they are not percentages of the older 2,143-key snapshot above. Their presence does not imply a detailed linguistic or runtime review.
+The entry counts without percentages were measured on 2026-10-12–13 (Italian on 2026-10-14); they are not percentages of the older 2,143-key snapshot above. Their presence does not imply a detailed linguistic or runtime review.
 Acrobat languages PdfCraft lacks: Danish, Dutch, Finnish, Norwegian, Swedish, Hebrew.
 
 ## Revision history
