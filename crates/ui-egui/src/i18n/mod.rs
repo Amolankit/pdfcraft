@@ -220,6 +220,12 @@ pub static LANGUAGES: [LangInfo; 24] = [
 ];
 
 impl LangInfo {
+    /// Whether the build can show the language. The web build cannot reach installed fonts, so Hindi
+    /// is registered there only when the craft-fonts input embeds a Devanagari face.
+    fn available(&self) -> bool {
+        script_renderable(self.code, cfg!(target_arch = "wasm32"), !pdfcraft_fonts::ui_devanagari_fonts().is_empty())
+    }
+
     /// How many plural forms the language's `@plural` entries list.
     fn plural_forms(&self) -> usize {
         (0..=1000).map(self.plural).max().unwrap_or(0).saturating_add(1)
@@ -237,6 +243,11 @@ impl LangInfo {
             catalog
         })
     }
+}
+
+/// `hi` needs an embedded Devanagari face on the web, where installed fonts are unavailable.
+fn script_renderable(code: &str, web: bool, has_devanagari_face: bool) -> bool {
+    code != "hi" || !web || has_devanagari_face
 }
 
 /// A language the UI can be shown in (a handle into [`LANGUAGES`]).
@@ -266,7 +277,7 @@ impl Lang {
 
     /// A language by its exact code.
     pub fn from_code(code: &str) -> Option<Lang> {
-        LANGUAGES.iter().find(|l| l.code.eq_ignore_ascii_case(code)).map(Lang)
+        LANGUAGES.iter().find(|l| l.code.eq_ignore_ascii_case(code) && l.available()).map(Lang)
     }
 
     /// Resolve the `language` preference: a language code, or [`AUTO`] (and anything unknown,
@@ -277,7 +288,7 @@ impl Lang {
 
     /// Every registered language.
     pub fn all() -> impl Iterator<Item = Lang> {
-        LANGUAGES.iter().map(Lang)
+        LANGUAGES.iter().filter(|l| l.available()).map(Lang)
     }
 
     pub fn name(self) -> &'static str {
@@ -1363,6 +1374,14 @@ mod tests {
         let mut restored = crate::PdfCraftApp::default();
         restored.restore(&app.persist());
         assert_eq!(restored.language, "te");
+    }
+
+    #[test]
+    fn hindi_is_deferred_on_web_without_a_devanagari_face() {
+        assert!(!script_renderable("hi", true, false));
+        assert!(script_renderable("hi", true, true));
+        assert!(script_renderable("hi", false, false));
+        assert!(script_renderable("te", true, false));
     }
 
     #[test]

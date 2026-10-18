@@ -3,7 +3,9 @@
 Hindi (`hi`, हिन्दी) is also available in Preferences and the control channel; `hi-IN` and
 `hi_IN.UTF-8` select it in Auto mode. Its 160-label starter catalog falls back to English for
 untranslated strings. Integer plurals follow CLDR Hindi: 0 and 1 use the singular, higher counts
-use the other form. Hindi uses a craft-fonts `Deva` face on desktop and web when one is supplied.
+use the other form. Hindi uses a craft-fonts `Deva` face on desktop and web when one is supplied; desktop also falls back to an
+installed face. The web build lists Hindi only when its craft-fonts input embeds a `Deva` face (with the
+current pinned input it does not, so Hindi is deferred there).
 Date-format settings use Hindi month and weekday names as well.
 The CI/release input `3d9ab3a132ed0eff457e424226a435a901da30d3` has no Devanagari face:
 `hindi_ui_text_uses_craft_fonts` skips with that revision or without `CRAFT_FONTS_DIR`, so this
