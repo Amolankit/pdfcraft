@@ -297,7 +297,7 @@ update the numbers.
 ### 14. Arabic not mirrored; Hindi incomplete; no Indonesian, Korean
 
 - **Missing:** a right-to-left layout (panels, menus, alignment), bidirectional text in the text
-  layout itself (wrapping, typed text); completing Hindi's 182-label starter catalog and adding a
+  layout itself (wrapping, typed text); completing Hindi's 160-label starter catalog and adding a
   release-pinned Devanagari face; catalogs for Indonesian and Korean (Acrobat ships
   Korean; it ships Arabic in its Middle East edition; it ships none of Hindi or Indonesian).
   Vietnamese ships as a catalog (`vi`, 100% of the current localizable union) but stays `partial`
@@ -384,7 +384,7 @@ update the numbers.
 
 | Date | Change | Summary |
 | --- | --- | --- |
-| 2026-10-17 | minor | Hindi has 182 starter labels; catalog completion and a CI/release-pinned Devanagari face remain in gap 14. Estimates unchanged |
+| 2026-10-17 | minor | Hindi has 160 starter labels; catalog completion and a CI/release-pinned Devanagari face remain in gap 14. Estimates unchanged |
 | 2026-10-15 | minor | Gap 12: the text oracle scores reading order as well as word F1, which is a bag of words and cannot see order; the first measurement separated 18 improvements from 6 regressions in a change F1 called unchanged on 26 of 29 files. Estimates unchanged. |
 | 2026-10-14 | minor | M1: raw-deflate fallback preserves decoding-limit errors in strict and tolerant decoding; synthetic filter and COS stream regressions. Estimates unchanged. |
 | 2026-10-15 | patch | Gap 24: record localization and installers as partial (unusable Chinese, Telugu and Arabic; unsigned Linux packages) |

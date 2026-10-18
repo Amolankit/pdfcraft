@@ -1,7 +1,7 @@
 # Interface language
 
 Hindi (`hi`, हिन्दी) is also available in Preferences and the control channel; `hi-IN` and
-`hi_IN.UTF-8` select it in Auto mode. Its 182-label starter catalog falls back to English for
+`hi_IN.UTF-8` select it in Auto mode. Its 160-label starter catalog falls back to English for
 untranslated strings. Integer plurals follow CLDR Hindi: 0 and 1 use the singular, higher counts
 use the other form. Hindi uses a craft-fonts `Deva` face on desktop and web when one is supplied.
 Date-format settings use Hindi month and weekday names as well.

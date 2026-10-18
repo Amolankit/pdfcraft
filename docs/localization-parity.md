@@ -33,7 +33,7 @@ add a language: [localization.md](localization.md). Summary in [ROADMAP.md](../R
 | English | `en` | built in (100%) | all; README and docs | Latin | yes | **full** | yes | 0 |
 | Simplified Chinese | `zh-hans` | 2,088 (97.4%) | dialogs and tooltips through `tl!`; no help | CJK text and IME work, but **release builds have no Hans face**: many characters show as boxes (#826, #688, #728, #758; Flatpak #689) | no | partial | yes | 6–12 |
 | Spanish | `es` | 2,046 (95.5%) | dialogs and tooltips; no help | Latin | no | partial | yes | 2–4 |
-| Hindi | `hi` | 182 starter labels | common labels; no help | `Deva` fallback wired, but no Devanagari face in CI/release craft-fonts revision `3d9ab3a132ed0eff457e424226a435a901da30d3`; glyph test skips, rendering unverified | no | partial | no | 10–18 |
+| Hindi | `hi` | 160 starter labels | common labels; no help | `Deva` fallback wired, but no Devanagari face in CI/release craft-fonts revision `3d9ab3a132ed0eff457e424226a435a901da30d3`; glyph test skips, rendering unverified | no | partial | no | 10–18 |
 | Arabic | `ar` | 2,143 (100%) | dialogs and tooltips; no help | Letters joined and lines reordered at load, but **layout not mirrored**, wrapped lines break at the wrong end, typed text runs left to right (`localization.md` §Arabic) | no | partial | yes (Middle East edition) | 25–45 |
 | French | `fr` | 2,128 (99.3%) | dialogs and tooltips; no help | Latin | no | partial | yes | 1–2 |
 | Portuguese (Brazil) | `pt-br` | 2,130 (99.4%) | dialogs and tooltips; no help | Latin | community (#288) | partial | yes | 1–2 |
@@ -83,7 +83,7 @@ Acrobat languages PdfCraft lacks: Danish, Dutch, Finnish, Norwegian, Swedish, He
 
 | Date | Change | Summary |
 | --- | --- | --- |
-| 2026-10-17 | minor | Hindi: 182 entries, locale registration, date names, CLDR integer plurals and required shared UI labels; Lithuanian/Vietnamese gain 22 AI-assisted, not separately native-reviewed entries to retain bundled-key coverage. No Devanagari face in the pinned craft-fonts input, so rendering coverage is not claimed |
+| 2026-10-17 | minor | Hindi: 160 entries, locale registration, date names, CLDR integer plurals and required shared UI labels, only keys the UI looks up (Lithuanian and Vietnamese unchanged). No Devanagari face in the pinned craft-fonts input, so rendering coverage is not claimed |
 | 2026-10-13 | minor | Vietnamese (`vi`) catalog: 2,591 entries (100% of current key union + `theme`/`Appearance`); twelve-language mean ≈ 68%; native-speaker community review; registered with `plural_none` |
 | 2026-10-14 | minor | Italian: 2,528 entries after adding the 201 keys the other catalogs had and the code looks up |
 | 2026-10-12 | minor | Added current counts for Kazakh, Polish, Slovenian, Greek, Turkish and Lithuanian; retained existing language assessments and the original percentage snapshot |

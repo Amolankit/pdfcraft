@@ -71,7 +71,6 @@
 	Remove	हटाएँ
 	Search	खोजें
 	Select all	सभी चुनें
-	Select none	चयन हटाएँ
 	Next	अगला
 	Previous	पिछला
 	Back	पीछे
@@ -87,8 +86,6 @@
 	Size	आकार
 	Date	तारीख
 	Page	पृष्ठ
-	Page {page}	पृष्ठ {page}
-	Page {page} of {total}	पृष्ठ {page} / {total}
 	All pages	सभी पृष्ठ
 	Current page	वर्तमान पृष्ठ
 	Selected pages	चयनित पृष्ठ
@@ -98,7 +95,6 @@
 	Comments	टिप्पणियाँ
 	Bookmarks	बुकमार्क
 	Attachments	संलग्नक
-	Properties	गुण
 	General	सामान्य
 	Appearance	दिखावट
 	Security	सुरक्षा
@@ -118,17 +114,13 @@
 	Save file	फ़ाइल सहेजें
 	Export	निर्यात करें
 	Import	आयात करें
-	Share	साझा करें
 	Rotate	घुमाएँ
-	Rotate left	बाएँ घुमाएँ
-	Rotate right	दाएँ घुमाएँ
 	Move	स्थानांतरित करें
 	Copy	प्रतिलिपि बनाएँ
 	Paste	चिपकाएँ
 	Rename	नाम बदलें
 	Replace	बदलें
 	Refresh	ताज़ा करें
-	Reset	रीसेट करें
 	Details	विवरण
 	Description	विवरण
 	Author	लेखक
@@ -137,32 +129,18 @@
 	Keywords	कीवर्ड
 	Creator	निर्माता
 	Producer	निर्माता
-	Created	निर्मित
 	Modified	संशोधित
 	Path	पथ
 	Location	स्थान
 	None	कोई नहीं
 	Custom	अनुकूलित
 	Default	डिफ़ॉल्ट
-	Automatic	स्वचालित
-	Manual	मैन्युअल
 	Zoom in	ज़ूम बढ़ाएँ
 	Zoom out	ज़ूम घटाएँ
-	First page	पहला पृष्ठ
-	Last page	अंतिम पृष्ठ
-	Go to page	पृष्ठ पर जाएँ
-	Search document	दस्तावेज़ खोजें
-	Match case	बड़े/छोटे अक्षर मिलाएँ
-	Whole words	पूर्ण शब्द
-	Replace all	सभी बदलें
 	No results	कोई परिणाम नहीं
-	Open in new window	नई विंडो में खोलें
 	About PdfCraft	PdfCraft के बारे में
 	Check for updates	अपडेट की जाँच करें
 	Keyboard shortcuts	कीबोर्ड शॉर्टकट
-	Report a problem	समस्या की रिपोर्ट करें
-	Privacy policy	गोपनीयता नीति
-	License	लाइसेंस
 @plural	{n} page|{n} pages	{n} पृष्ठ|{n} पृष्ठ
 
 key	Ctrl	Ctrl
